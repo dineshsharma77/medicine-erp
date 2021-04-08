@@ -1,0 +1,31 @@
+{%extends 'layouts/master.html' %}
+
+{% block content %}
+		<table >
+			<tr>
+				<th>Name</th>
+				<th>Brand</th>
+				<th>Batch</th>
+				<th>Qty.</th>
+				<th>Packing</th>
+				<th>dealer</th>
+				<th>cost</th>
+				<th>selling price</th>
+				<th>expiry date</th>
+			</tr>
+			{% for medicine in medicines %}
+			<tr>
+				<td>{{ medicine.name }}</td>
+				<td>{{ medicine.brand.name }}</td>
+				<td>{{ medicine.batch_no }}</td>
+				<td>{{ medicine.quantity }}</td>
+				<td>{{ medicine.packing }}</td>
+				<td>{{ medicine.dealer.name }}</td>
+				<td>{{ medicine.cost }}</td>
+				<td>{{ medicine.selling_price }}</td>
+				<td>{{ medicine.expiry_date }}</td>
+			</tr>
+			{% endfor %}
+
+		</table>
+{% endblock %}

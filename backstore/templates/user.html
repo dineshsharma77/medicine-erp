@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title>register</title>
+	<style type="text/css">
+		form{
+			width: 50%;
+			background-color: #1569C7;
+			padding: 50;
+		}
+
+		label{
+			display: inline-block;
+			
+			color: white;
+
+		}
+
+		input{
+			width:80%;
+			padding: 10;
+		}
+		
+		h1{
+			color: white;
+		}
+
+		button{
+			padding: 10;
+			background-color: white;
+			color: black
+		}
+		.register{
+			margin-top: 400px;
+			margin-bottom: 100px;
+
+			
+		}
+		.login{
+			margin-top: 50px;
+			
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div class="login">
+		<center>
+		<form method="post" action="/login">
+			{% csrf_token %}
+			
+			<p>
+				<h1><b>LOGIN</b></h1>	
+			<p>
+				<label>name</label><br>
+				<input type="text" placeholder="enter name" name="name">
+			</p>
+
+			<p>
+				<label>password</label><br>
+				<input type="password" name="password" placeholder="enter password">
+			</p>
+
+			<p>
+				<button type="submit" name="submit">login</button>
+			</p>
+		</form>
+		</center>
+	</div>
+
+	<div class="register">
+		<center>
+		<form method="post" action="/register">
+			{% csrf_token %}
+			<p>
+				<h1><b>REGISTER</b></h1>	
+			</p>
+
+			<p>
+				<label>name</label><br>
+				<input type="text" placeholder="enter name" name="name">
+			</p>
+
+			<p>
+				<label>E mail</label><br>
+				<input type="email" name="email" placeholder="enter E mail">
+			</p>
+
+			<p>
+				<label>password</label><br>
+				<input type="password" name="password" placeholder="enter password">
+			</p>
+
+			<p>
+				<label>DOB</label><br>
+				<input type="date" name="date" placeholder="DD-MM-YYYY">
+			</p>
+
+			<p>
+				<button type="submit" name="submit">submit</button>
+			</p>
+		</form>
+		</center>
+	</div>
+	
+</body>
+</html>
+
+

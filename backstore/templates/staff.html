@@ -1,0 +1,22 @@
+{% extends 'layouts/master.html' %}
+{% block content %}
+
+<table >
+		<tr>
+			<th>name</th>
+			<th>contact</th>
+			<th>address</th>
+		</tr>
+
+		{% for stf in staff %}
+		<tr>
+			<td>{{ stf.name }}</td>
+			<td>{{ stf.contact }}</td>
+			<td>{{ stf.address }}</td>
+		</tr>
+		{% endfor %}
+
+
+</table>
+
+{% endblock %}
