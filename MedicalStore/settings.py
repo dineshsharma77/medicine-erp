@@ -1,3 +1,4 @@
+import os
 """
 Django settings for MedicalStore project.
 
@@ -27,7 +28,8 @@ SECRET_KEY = 'tj@vymzx!=qzd9aev5bk8gtd$9r!c5n&be@=0xl_9=q7r&#iku'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'medicine-erp.herokuapp.com'
+    'medicine-erp.herokuapp.com',
+    'localhost'
 ]
 
 
@@ -130,4 +132,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
