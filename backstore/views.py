@@ -16,6 +16,10 @@ import bcrypt
 
 from django.http import HttpResponse
 
+def index(request):
+	return render(request,'index.html')
+
+
 def brands(request):
 	if not request.session.get('user_logged_in'):
 		return redirect('/user')
