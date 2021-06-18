@@ -1,1 +1,1 @@
-web: run-program gunicorn MedicalStore.wsgi --max-requests 200 --timeout 25 --log-file -
+web: gunicorn MedicalStore.wsgi --max-requests 200 --timeout 25 --log-file -
