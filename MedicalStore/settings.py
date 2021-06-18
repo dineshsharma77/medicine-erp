@@ -27,7 +27,8 @@ SECRET_KEY = 'tj@vymzx!=qzd9aev5bk8gtd$9r!c5n&be@=0xl_9=q7r&#iku'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'medicine-erp.herokuapp.com'
+    'medicine-erp.herokuapp.com',
+    'localhost'
 ]
 
 

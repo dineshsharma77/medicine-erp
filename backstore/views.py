@@ -98,10 +98,12 @@ def register(request):
 	# Hashing the password before storing
 	password = request.POST.get('password')
 	salt = bcrypt.gensalt()
-	hashed_password = bcrypt.hashpw(password.encode('ascii'), salt)
-	
+	hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+
+	hashed = hashed_password.decode('utf-8')
+
 	dob = request.POST.get('date')
-	user = User(name=name , email=email, password=hashed_password, dob=dob)
+	user = User(name=name , email=email, password=hashed, dob=dob)
 	user.save()
 
 	return redirect("/user")
@@ -116,11 +118,9 @@ def login(request):
 	except Exception as e:
 		return redirect("/user")
 
-	if(check_user.password == password):
-
-		request.session["user_logged_in"] = True
-
+	if(check_user.password.encode('utf-8') == bcrypt.hashpw(password.encode('utf-8'), check_user.password.encode('utf-8'))):
 		# Set the session
+		request.session["user_logged_in"] = True
 		return redirect('/medicines')
 
 
