@@ -26,7 +26,9 @@ SECRET_KEY = 'tj@vymzx!=qzd9aev5bk8gtd$9r!c5n&be@=0xl_9=q7r&#iku'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'medicine-erp.herokuapp.com'
+]
 
 
 # Application definition
