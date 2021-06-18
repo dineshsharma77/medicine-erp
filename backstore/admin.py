@@ -8,3 +8,4 @@ admin.site.register(Dealer)
 admin.site.register(Brand)
 admin.site.register(Staff)
 admin.site.register(User)
+

@@ -2,12 +2,16 @@
 {% block content %}
 
 <table >
+	<thead>
 		<tr>
 			<th>name</th>
 			<th>contact</th>
 			<th>address</th>
 		</tr>
-
+		
+	</thead>
+		
+	<tbody>
 		{% for stf in staff %}
 		<tr>
 			<td>{{ stf.name }}</td>
@@ -15,6 +19,9 @@
 			<td>{{ stf.address }}</td>
 		</tr>
 		{% endfor %}
+		
+	</tbody>
+		
 
 
 </table>

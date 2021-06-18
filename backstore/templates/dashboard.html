@@ -1,0 +1,116 @@
+{%extends 'layouts/master.html' %}
+
+{% block content %}
+	<div class="expiring_medicines" style=" width: 100%;">
+		<h1>MEDICINES EXPIRING IN NEXT 2 MONTHS</h1>
+		<table>
+
+			<thead>
+				
+				<tr>
+					<th>Batch no.</th>
+				
+					<th>Medicine name</th>
+				
+					<th>Brand</th>
+				
+					<th>Dealer</th>
+				
+					<th>Expiring on</th>
+				
+					<th>Cost</th>
+
+					<th>selling price</th>
+
+					<th>qunatity</th>
+
+					<th>packing</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+					{% for medicine in expiring_medicines %}
+			<tr>
+				<td>{{ medicine.batch_no }}</td>
+				<td>{{ medicine.name }}</td>
+				<td>{{ medicine.brand }}</td>
+				<td>{{ medicine.dealer }}</td>
+				<td>{{ medicine.expiry_date }}</td>
+				<td>{{ medicine.cost }}</td>
+				<td>{{ medicine.selling_price }}</td>
+				<td>{{ medicine.quantity }}</td>
+				<td>{{ medicine.packing }}</td>
+				
+			</tr>
+			{% endfor %}
+
+			</tbody>
+			
+
+		</table>
+
+
+
+		
+	<div class="check stock" style=" width: 100%;">
+
+	<h1>MEDICINES WITH ONLY LESS THAN 5 PACKINGS ARE AVILABLE</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Batch no.</th>
+				
+					<th>Medicine name</th>
+				
+					<th>Brand</th>
+				
+					<th>Dealer</th>
+				
+					<th>Expiring on</th>
+				
+					<th>Cost</th>
+
+					<th>selling price</th>
+
+					<th>qunatity</th>
+
+					<th>packing</th>
+
+
+				</tr>
+				
+			</thead>
+
+			<tbody>
+				{% for i in stock %}
+				<tr>
+					<th>{{ i.batch_no }}</th>
+				
+					<th>{{ i.name }}</th>
+				
+					<th>{{ i.brand }}</th>
+				
+					<th>{{ i.dealer }}</th>
+				
+					<th>{{ i.expiry_date }}</th>
+				
+					<th>{{ i.Cost }}</th>
+
+					<th>{{ i.selling_price }}</th>
+
+					<th>{{ i.qunatity }}</th>
+
+					<th>{{ i.packing }}</th>
+				</tr>
+			{% endfor %}
+				
+			</tbody>
+			
+			
+		</table>
+	
+	</div>
+</div>
+
+{% endblock %}

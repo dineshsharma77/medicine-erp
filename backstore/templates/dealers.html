@@ -2,12 +2,16 @@
 
 {% block content %}
 	<table >
-		<tr>
-			<th>name</th>
-			<th>contact</th>
-			<th>address</th>
-		</tr>
-{% for Dealer in dealers %}
+		<thead>
+			<tr>
+				<th>name</th>
+				<th>contact</th>
+				<th>address</th>
+			</tr>
+		</thead>
+
+<tbody>
+	{% for Dealer in dealers %}
 		
 		<tr>
 			<td>{{ Dealer.name }}</td>
@@ -17,3 +21,5 @@
 		{% endfor %}
 	</table>
 {% endblock %}
+	
+</tbody>		

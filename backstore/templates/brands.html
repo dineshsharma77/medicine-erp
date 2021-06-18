@@ -2,17 +2,22 @@
 
 {% block content %}
 	<table >
-		<tr>
-			<th>name</th>
+		<thead>
+			<tr>
+				<th>name</th>
 			
-		</tr>
+			</tr>
+		</thead>
 
-		{% for brand in brands %}
-		<tr>
-			<td>{{ brand.name }}</td>
-			
-		</tr>
-		{% endfor %}
+		<tbody>
+
+			{% for brand in brands %}
+			<tr>
+				<td>{{ brand.name }}</td>
+				
+			</tr>
+			{% endfor %}
+		</tbody>
 
 
 	</table>

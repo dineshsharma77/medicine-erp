@@ -1,0 +1,56 @@
+{%extends 'layouts/master.html' %}
+
+{% block content %}
+<form class="container-fluid" method="POST" action="/addMedicine">
+  {% csrf_token %}
+  <div class="mb-3" style="margin-top: 160px;">
+    <label for="name" class="form-label">NAME</label>
+    <input type="text" class="form-control" id="name" aria-describedby="name">
+    <div id="name" class="form-text">--------</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">brand</label>
+    <input type="text" class="form-control" id="brand">
+  </div>
+
+   <div class="mb-3">
+    <label for="brand" class="form-label">Batch no.</label>
+    <input type="text" class="form-control" id="brand" aria-describedby="brand">
+    <div id="brand" class="form-text">--------</div>
+  </div>
+
+  <div>
+	  <div class="mb-3" style="width: 50%; float: right;">
+	    <label for="quantity" class="form-label">Quantity</label>
+	    <input type="number" class="form-control" id="quantity" aria-describedby="quantity">
+	    <div id="quantity" class="form-text">-------</div>
+	  </div>
+
+	  <div class="mb-3" style="width: 50%; float: left;">
+	    <label for="packing" class="form-label">packing</label>
+	    <input type="number" class="form-control" id="packing" aria-describedby="packing">
+	    <div id="packing" class="form-text">-------</div>
+	  </div>
+  </div> 
+
+  <div class="dealer">
+		<label for="dealers">dealers:</label>
+	  	<select name="dealers" id="dealers" style="width: 100px; background-color: blue;">
+	  	{% for i in dealer %}
+	    	<option value="i">{{ i.name }}</option>
+	    {% endfor %}
+	    
+	  </select>
+	  <br><br>
+  
+	  </ul>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-primary my-3">Submit</button>
+</form>
+
+
+{% endblock %}

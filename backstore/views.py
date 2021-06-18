@@ -6,7 +6,9 @@ from .models import Dealer
 from .models import Brand
 from .models import Staff
 from .models import User
+
 from django.template import loader
+from datetime import timedelta, datetime
 
 import bcrypt
 
@@ -23,7 +25,8 @@ def brands(request):
 	template = loader.get_template('brands.html')
 	data = {
 		'brands': brands
-	}
+		}
+
 	return HttpResponse(template.render(data,request))
 
 def dealers(request):
@@ -50,11 +53,11 @@ def logout(request):
 def medicines(request):
 	if not request.session.get('user_logged_in'):
 		return redirect('/user')
-
+	# finding out medicines which are out of stock
 	medicines = Medicine.objects.all()
 
-	print(medicines)
-
+					
+	
 	template = loader.get_template('listing.html')
 
 	data = {
@@ -116,4 +119,81 @@ def login(request):
 		# Set the session
 		return redirect('/medicines')
 
+
 	return redirect("/user")
+
+
+def dashboard(request):
+	if not request.session.get('user_logged_in'):
+		return redirect('/user')
+
+		# template = loader.get_template('dashboard.html')
+
+	expiring_medicines = checkexpiry()
+	print(expiring_medicines)
+
+	stock = checkstock()
+
+	# exp_med = Expiring_medicines.objects.all()
+	# stock = Stock.objects.all()
+
+	template = loader.get_template('dashboard.html')
+
+	data = {
+		'expiring_medicines' : expiring_medicines,
+		'stock' : stock,
+	}		
+	return HttpResponse(template.render(data,request))
+
+
+def delete(request, id):
+	try:
+		delete_med = Medicine.objects.get(id=id)
+
+		delete_med.delete()
+	except Exception as e:
+		print ("exception occurred  " + str(e))
+	
+
+	return redirect('/medicines')
+
+
+
+
+def checkexpiry():
+
+	
+	today = datetime.now()
+
+	time_diff = timedelta(days=60)
+
+	des_date = (today + time_diff)
+
+	expiring_medicines = Medicine.objects.filter( expiry_date__range=(today, des_date))
+
+	return expiring_medicines
+
+
+def checkstock():
+
+	stock = Medicine.objects.filter( packing__range= (0,5))
+
+	# for med in stock:
+	# 	name = med.name
+	# 	brand = med.brand.name
+	# 	batch_no = med.batch_no
+	# 	quantity = med.quantity
+	# 	packing = med.packing
+	# 	dealer = med.dealer.name
+	# 	cost = med.cost
+	# 	selling_price = med.selling_price
+	# 	expiry_date = med.expiry_date
+
+	# 	stock = Stock(name = name,brand=brand,batch_no=batch_no,quantity=quantity,packing=packing,dealer=dealer,cost=cost,selling_price=selling_price,expiry_date=str(expiry_date))
+
+	# 	stock.save()
+
+	return stock
+
+
+

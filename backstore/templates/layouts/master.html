@@ -10,7 +10,6 @@
 			  overflow: hidden;
 			  background-color:#1569C7;
 			  display: block;
-			  position: fixed;
 			  width:100%;
 			  margin-top: 0;
 			}
@@ -33,7 +32,6 @@
 				
 				
 				width:100%;
-				margin-top: 60;
 				padding-top: 0;
 				text-align: left;
 				background-color: white;
@@ -79,15 +77,14 @@
 				padding:8;
 			}
 		</style>
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 	</head>
 		<body>
 		
 			<header>
-				<div class="navigation">
-					<center><input  type=text placeholder="search"></center>
-
-				</div>
+				 
 				<ul>
+					<li><a href="/dashboard"{% if request.path == "/dashboard" %} style= "border-bottom: 3px  solid red;" {% endif %}>DASHBORD</a></li>
 					
 					<li><a href="/dealers"{% if request.path == "/dealers" %} style= "border-bottom: 3px  solid red;" {% endif %}>DEALERS</a></li>
 
@@ -96,20 +93,31 @@
 					<li><a href="/brands"{% if request.path == "/brands" %} style= "border-bottom: 3px solid red;" {% endif %}>BRANDS</a></li>
 
 					<li><a href="/staff" {% if request.path == "/staff" %} style= "border-bottom: 3px solid red;" {% endif %}>STAFF</a></li>
-
-					<li><a  class="btn btn-primary"    href="/logout">Logout</a></li>
-					
 					
 
+					<li><a  class="btn btn-primary" style="float: left;" href="/logout">Logout</a></li>
 
 				</ul>
+			
 			</header>
 				
-
+			<div class="container-fluid" style="padding-top: 50px">
 	 
-
 			{% block content %}
 			{% endblock %}
 
+			</div>
+			<script
+			  src="//code.jquery.com/jquery-3.6.0.min.js"
+			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			  crossorigin="anonymous"></script>
+
+			  <script type="text/javascript" src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+			  <script type="text/javascript">
+			  	$(document).ready( function () {
+				    $('table').DataTable();
+				} );
+			  </script>
 		</body>
 </html>
